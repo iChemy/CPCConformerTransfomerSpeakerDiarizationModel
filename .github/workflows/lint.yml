@@ -1,0 +1,23 @@
+name: Lint and Format Check
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ruff-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up ruff
+        uses: astral-sh/ruff-action@v3
+
+      - name: Run ruff linter
+        run: ruff check .
+
+      - name: Check formatting with ruff format
+        run: ruff format --check --diff .

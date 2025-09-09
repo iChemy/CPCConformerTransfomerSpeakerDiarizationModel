@@ -24,7 +24,6 @@ def apply_min_duration(
     """
     if min_duration_on == 0 and min_duration_off == 0:
         return predictions
-
     postprocessed_preds = predictions.clone().cpu()
     num_frames, num_speakers = predictions.shape
 

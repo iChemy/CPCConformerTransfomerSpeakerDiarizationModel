@@ -158,9 +158,14 @@ class CPCStreamingDiarizationModel(nn.Module, PyTorchModelHubMixin):
         sample_rate: int = 16000,
     ) -> torch.Tensor:
         frame_hop_sec = self.get_frame_hop_sec(sample_rate)
-        return apply_min_duration(
-            predictions, frame_hop_sec, min_duration_on, min_duration_off
-        )
+        processed = []
+        for i in range(predictions.size(0)):
+            processed.append(
+                apply_min_duration(
+                    predictions[i], frame_hop_sec, min_duration_on, min_duration_off
+                )
+            )
+        return torch.stack(processed, dim=0)
 
     def forward_block(
         self,

@@ -148,16 +148,10 @@ wheels = [
 ]
 
 [[package]]
-name = "cpc-audio"
-version = "1.0"
-source = { git = "https://github.com/facebookresearch/CPC_audio.git?rev=b98a1bdf1fe9ea219816db7a6c28115d404a3510#b98a1bdf1fe9ea219816db7a6c28115d404a3510" }
-
-[[package]]
 name = "cpcconformertransfomerspeakerdiarizationmodel"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "cpc-audio" },
     { name = "huggingface-hub", extra = ["cli"] },
     { name = "numpy" },
     { name = "scipy" },
@@ -173,7 +167,6 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cpc-audio", git = "https://github.com/facebookresearch/CPC_audio.git?rev=b98a1bdf1fe9ea219816db7a6c28115d404a3510" },
     { name = "huggingface-hub", extras = ["cli"], specifier = ">=0.34.4" },
     { name = "numpy", specifier = ">=2.3.2" },
     { name = "scipy", specifier = ">=1.16.1" },
